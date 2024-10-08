@@ -1,0 +1,52 @@
+.account {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  &__bar {
+    align-items: center;
+    background-color: var(--ngx-valepro-color-primary);
+    border-radius: 22px;
+    cursor: pointer;
+    display: flex;
+    height: 44px;
+    padding-left: 15px;
+  }
+
+  &__icon {
+    color: var(--ngx-valepro-color-secondary);
+    font-size: 24px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  &__profile {
+    display: none;
+    width: 400px;
+  }
+
+  &__information {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .account__profile {
+    display: block;
+  }
+
+  .account__information {
+    padding-left: 15px;
+  }
+}

@@ -1,0 +1,28 @@
+<div class="confirmAward">
+  <div class="confirmAward__close">
+    <mat-icon class="confirmAward__iconClose" (click)="closeDialog()">close</mat-icon>
+  </div>
+  <div class="confirmAward__contain">
+    <span class="regular-16 primary confirmAward__messagge">{{data.message}}</span>
+    <div *ngIf="data.typeAward === 6" class="confirmAward__containOperator">
+      <span class="bold-12 primary" >Selecciona el operador del número de celular</span>
+      <mat-form-field class="confirmAward__operators">
+        <mat-label [ngStyle]="{ color: !isvalid ? 'red' : '' }">Operador</mat-label>
+        <mat-select [(ngModel)]="selectedOperatorCodeId" (selectionChange)="onChange()">
+          <mat-option *ngFor="let operator of operators" [value]="operator.CodeId">
+            <span class="regular-16 primary">{{operator.Text}}</span> 
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <span *ngIf="!isvalid" class="confirmAward__error regular-12">* Campo obligatorio</span>
+    </div>
+    <div class="confirmAward__containBtn">
+      <button class="confirmAward__btnConfirm" type="button" (click)="goConfirm()">
+        <span class="bold-16 primary">Confirmar</span>
+      </button>
+      <button class="confirmAward__btnUpdate" type="button" (click)="goUpdateData()">
+        <span class="bold-16 primary">Actualizar datos</span>
+      </button>
+    </div>
+  </div>
+</div>

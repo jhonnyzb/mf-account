@@ -1,0 +1,15 @@
+<div class="col-menu" *ngIf="menuProfile.length > 0">
+
+  <div class="content-menu">
+    <div [class]="contentClass">
+      <ul class="menu-side">
+
+        <li class="division" *ngFor="let item of menuProfile">
+          <a class="regular-16 primary {{item.urlHelp}}"
+            [ngClass]="{'optionSelected':contentClass == 'content'?item.Nombre== this.selectedOption:false}"
+            [routerLink]="[item.NombreObjeto]" routerLinkActive="active" (click)="goTo(item)">{{item.Nombre}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

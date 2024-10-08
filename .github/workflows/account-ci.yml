@@ -1,0 +1,38 @@
+name: Uat Account CI/CD
+
+on:
+  push:
+    branches:
+      - uat
+
+jobs:
+   deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_CI }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_CI }}
+        aws-region: us-east-1
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16.x'
+
+    - name: Install Dependencies
+      run: npm install --legacy-peer-deps
+
+    - name: Build Angular App
+      run: npm run continuous
+
+    - name: Deploy to S3
+      if: success()
+      run: aws s3 sync ./dist/continuous s3://stage-mc-finally-account
+
+    - name: Invalidar CloudFront
+      if: success()
+      run: aws cloudfront create-invalidation --distribution-id E3RMN314T9BLR0 --paths "/*"

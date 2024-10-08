@@ -1,0 +1,160 @@
+<div class="dataUpdate">
+  <div class="dataUpdate__tittleBar buttonBarHeader">
+    <span class="bold-16 primary">Actualización de datos</span>
+  </div>
+  <div class="dataUpdate__contend">
+    <div class="dataUpdate__menu">
+      <app-menu-profiles></app-menu-profiles>
+    </div>
+    <div class="dataUpdate__form-conted">
+      <form [formGroup]="updateForm" *ngIf="configForm && updateForm && isReady" class="dataUpdate__form">
+        <span class="bold-16 primary dataUpdate__form-tittle">Datos personales</span>
+        <mat-form-field *ngIf="documentType">
+          <mat-label class="primary">{{documentType.Label}}</mat-label>
+          <mat-select [disabled]="!documentType.Editable" matInput [placeholder]="documentType.Placeholder"
+            formControlName="1">
+            <mat-option *ngFor="let item of documentType.listAsigned" [value]="item.codeId">{{item.name}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="updateForm.get('1').hasError('required')">
+            {{documentType.errorMessageRegularExpression}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="document">
+          <mat-label class="primary">{{document.Label}}</mat-label>
+          <input matInput [disabled]="!document.Editable" matInput [placeholder]="document.Placeholder"
+            formControlName="2">
+          <mat-error *ngIf="updateForm.get('2').hasError('required')">
+            {{document.errorMessageRegularExpression}}
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field *ngIf="firstName">
+          <mat-label class="primary">{{firstName.Label}}</mat-label>
+          <input matInput [disabled]="!firstName.Editable" matInput [placeholder]="firstName.Placeholder"
+            formControlName="3" (blur)="trimValue('3')">
+          <mat-error *ngIf="updateForm.get('3').hasError('required')">
+            {{firstName.errorMessageRegularExpression}}
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field *ngIf="secondName">
+          <mat-label class="primary">{{secondName.Label}}</mat-label>
+          <input matInput [disabled]="!secondName.Editable" matInput [placeholder]="secondName.Placeholder"
+            formControlName="4" (blur)="trimValue('4')">
+          <mat-error *ngIf="updateForm.get('4').hasError('required')">
+            {{secondName.errorMessageRegularExpression}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="firstLastName">
+          <mat-label class="primary">{{firstLastName.Label}}</mat-label>
+          <input matInput [disabled]="!firstLastName.Editable" matInput [placeholder]="firstLastName.Placeholder"
+            formControlName="5" (blur)="trimValue('5')">
+          <mat-error *ngIf="updateForm.get('5').hasError('required')">
+            {{firstLastName.errorMessageRegularExpression}}
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field *ngIf="secondLastName">
+          <mat-label class="primary">{{secondLastName.Label}}</mat-label>
+          <input matInput [disabled]="!secondLastName.Editable" matInput [placeholder]="secondLastName.Placeholder"
+            formControlName="6" (blur)="trimValue('6')">
+          <mat-error *ngIf="updateForm.get('6').hasError('required')">
+            {{secondLastName.errorMessageRegularExpression}}
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field *ngIf="phone">
+          <mat-label class="primary">{{phone.Label}}</mat-label>
+          <input matInput [disabled]="!phone.Editable" matInput [placeholder]="phone.Placeholder" formControlName="7"
+            (blur)="trimValue('7')">
+          <mat-error *ngIf="updateForm.get('7').hasError('required')">
+            {{phone.errorMessageRegularExpression}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="email">
+          <mat-label class="primary">{{email.Label}}</mat-label>
+          <input matInput [disabled]="!email.Editable" matInput [placeholder]="email.Placeholder" formControlName="8"
+            (blur)="trimValue('8')">
+          <mat-error *ngIf="updateForm.get('8').hasError('required')">
+            {{email.errorMessageRegularExpression}}
+          </mat-error>
+        </mat-form-field>
+
+
+
+        <span class="bold-16 primary dataUpdate__form-tittle">Datos de contacto</span>
+
+        <mat-form-field *ngIf="country">
+          <mat-label class="primary">{{country.Label}}</mat-label>
+          <mat-select [disabled]="!country.Editable" matInput [placeholder]="country.Placeholder" formControlName="9"
+            (selectionChange)="onChangeCountry($event)">
+            <mat-option *ngFor="let item of country.listAsigned" [value]="item.codeId">{{item.name}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="updateForm.get('9').hasError('required')">
+            {{country.errorMessageRegularExpression}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="department">
+          <mat-label class="primary">{{department.Label}}</mat-label>
+          <mat-select [disabled]="!department.Editable" matInput [placeholder]="department.Placeholder"
+            formControlName="10" (selectionChange)="onChangeDepartment($event)">
+            <mat-option *ngFor="let item of department.listAsigned" [value]="item.codeId">{{item.name}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="updateForm.get('10').hasError('required')">
+            {{department.errorMessageRegularExpression}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="city">
+          <mat-label class="primary">{{city.Label}}</mat-label>
+          <mat-select [disabled]="!city.Editable" matInput [placeholder]="city.Placeholder" formControlName="11">
+            <option [value]="-1"></option>
+            <mat-option *ngFor="let item of city.listAsigned" [value]="item.codeId">{{item.name}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="updateForm.get('11').hasError('required')">
+            {{city.errorMessageRegularExpression}}
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field *ngIf="addressResidence">
+          <mat-label class="primary">{{addressResidence.Label}}</mat-label>
+          <input matInput [disabled]="!addressResidence.Editable" matInput [placeholder]="addressResidence.Placeholder"
+            formControlName="12" (blur)="trimValue('12')">
+          <mat-error *ngIf="updateForm.get('13').hasError('required')">
+            {{addressResidence.errorMessageRegularExpression}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="neighborhoodResidence">
+          <mat-label class="primary">{{neighborhoodResidence.Label}}</mat-label>
+          <input matInput [disabled]="!neighborhoodResidence.Editable" matInput
+            [placeholder]="neighborhoodResidence.Placeholder" formControlName="13" (blur)="trimValue('13')">
+          <mat-error *ngIf="updateForm.get('13').hasError('required')">
+            {{neighborhoodResidence.errorMessageRegularExpression}}
+          </mat-error>
+        </mat-form-field>
+
+        <span class="regular-14 primary">*Campos requeridos</span>
+
+        <div *ngIf="!isLoadUpdate" class="button dataUpdate__form-button" (click)="onSubmit()">
+          <span class="bold-16 primary">Actualizar datos</span>
+        </div>
+        <div *ngIf="isLoadUpdate" class="button dataUpdate__form-button">
+          <span class="bold-16 primary">Cargando...</span>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+
+</div>

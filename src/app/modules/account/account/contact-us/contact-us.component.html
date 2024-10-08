@@ -1,0 +1,87 @@
+<div class="dataContactUs">
+  <div class="dataContactUs__tittleBar buttonBarHeader">
+    <mat-icon class="dataContactUs__tittleBarIcon">keyboard_arrow_left</mat-icon>
+    <span class="bold-16 primary">Contáctanos</span>
+  </div>
+  <div class="dataContactUs__contend">
+    <div class="dataContactUs__form-conted">
+      <form [formGroup]="formContactUs" class="dataContactUs__form" (ngSubmit)="onSubmit()">
+        <div class="dataContactUs__box-disabled">
+          <div class="dataContactUs__header">
+            <span class="bold-24 primary dataContactUs__form-tittle">{{dataAccount?.fullName}}</span>
+            <span class="bold-20 tertiary dataContactUs__form-tittle" (click)="navigateToDetailAccount()">
+              <img src="assets/img/ICON_Edit.svg" alt="">
+              Editar
+            </span>
+          </div>
+          <mat-form-field class="custom-disabled">
+            <mat-label class="primary">Cédula de ciudadanía</mat-label>
+            <input matInput [disabled]="true" matInput placeholder="Número de documento" formControlName="documentType">
+          </mat-form-field>
+
+          <mat-form-field class="custom-disabled">
+            <mat-label class="primary">Número de documento</mat-label>
+            <input matInput [disabled]="true" matInput placeholder="Número de documento"
+              formControlName="documentNumber">
+          </mat-form-field>
+
+          <mat-form-field class="custom-disabled">
+            <mat-label class="primary">Ciudad</mat-label>
+            <input matInput [disabled]="true" matInput placeholder="Número de documento" formControlName="city">
+          </mat-form-field>
+
+          <mat-form-field class="custom-disabled">
+            <mat-label class="primary">Número de teléfono</mat-label>
+            <input matInput [disabled]="true" matInput placeholder="Número de teléfono" formControlName="phone">
+          </mat-form-field>
+
+          <mat-form-field class="custom-disabled">
+            <mat-label class="primary">Correo electrónico</mat-label>
+            <input matInput [disabled]="true" matInput placeholder="Correo electrónico" formControlName="email">
+          </mat-form-field>
+        </div>
+
+        <mat-form-field>
+          <mat-label class="primary">Motivo</mat-label>
+          <mat-select matInput placeholder="Motivo *" formControlName="CodeId">
+            <mat-option *ngFor="let item of reasonList" [value]="item.codeId">{{item.name}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="submitted && formContactUs.get('CodeId').errors">
+            * Este campo es requerido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label class="primary">Número de pedido</mat-label>
+          <input matInput matInput placeholder="Número de pedido" formControlName="OrderId">
+          <mat-error *ngIf="submitted && formContactUs.get('OrderId').errors">
+            * Este campo es requerido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label class="primary">Mensaje</mat-label>
+          <textarea matInput formControlName="Message"></textarea>
+          <mat-error *ngIf="submitted && formContactUs.get('Message').errors">
+            * Este campo es requerido
+          </mat-error>
+        </mat-form-field>
+
+        <span class="regular-14 primary">*Campos requeridos</span>
+
+        <div class="dataContactUs__captcha">
+          <re-captcha (resolved)="resolved($event)" siteKey={{keyCaptcha}}></re-captcha>
+          <div *ngIf="submitted && (captcha == '' || captcha == null)">
+            <mat-error>* Confirmacion de re-Captcha es requerida</mat-error>
+          </div>
+        </div>
+
+        <div class="button dataContactUs__form-button">
+          <button type="submit" class="bold-16 primary">
+            Enviar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

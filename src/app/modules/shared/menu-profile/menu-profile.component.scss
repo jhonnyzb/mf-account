@@ -1,0 +1,160 @@
+.col-menu {
+  max-width: 335px;
+  width: 100%;
+}
+
+.col-info {
+  flex: 1;
+}
+
+.content-account {
+  justify-content: space-between;
+  flex-flow: row wrap;
+}
+
+.regular-16 {
+  color: var(--ngx-valepro-color-secondary);
+}
+
+.content-menu {
+  background: var(--ngx-valepro-color-primary);
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.content-menu,
+.content-info {
+  position: sticky;
+  top: 150px;
+  width: 100%;
+}
+
+.content {
+  padding: 10px 10px 0;
+  background-color: var(--ngx-valepro-color-blanco);
+
+  a.active {
+    color: var(--ngx-valepro-color-secondary);
+    font-family: "bold", sans-serif;
+  }
+}
+
+.content-2 {
+  padding: 0 15px 0;
+
+  background-color: var(--ngx-valepro-color-primary);
+
+  .menu-side {
+    padding-left: 0;
+    margin-bottom: 0;
+
+    a {
+      color: var(--ngx-valepro-color-secondary);
+      padding: 12px 0;
+
+      &.active {
+        font-family: "medium", sans-serif;
+      }
+    }
+
+    .division {
+      border-bottom: 1px solid var(--ngx-valepro-color-secondary);
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+}
+
+.division {
+  border-bottom: 1px solid var(--ngx-valepro-color-secondary);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.content-pedidos {
+  padding: 10px 0;
+  background-color: var(--ngx-valepro-color-blanco);
+  justify-content: space-between;
+  min-width: 100vh;
+
+  .card-pedidos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    padding: 25px 10px;
+    box-shadow: 9px 5px 9px rgb(27 12 63 / 50%);
+  }
+}
+
+.card-imagen-premio {
+  img {
+    width: -webkit-fill-available;
+    max-width: 150px;
+    top: 75px;
+    position: sticky;
+  }
+}
+
+.estado {
+  background-color: var(--color-secundario);
+  width: 34px;
+  height: 34px;
+  border-radius: 20px;
+
+  &::before {
+    font-size: 22px;
+  }
+}
+
+.line {
+  border-top: 3px solid var(--ngx-valepro-color-terciary);
+}
+
+.menu-side li:last-child {
+  text-align: center;
+  padding-bottom: 15px;
+  margin-top: 0;
+}
+
+.menu-side {
+  list-style: none;
+  padding: 0;
+
+  a {
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+
+    &::before {
+      font-size: 13px;
+      margin-right: 25px;
+    }
+
+    &.icono-embajador {
+      &::before {
+        font-size: 18px;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .icono-embajador {
+    &::before {
+      font-size: 18px;
+      margin-right: 5px;
+    }
+  }
+}
+
+@media (max-width: 769px) {
+  .col-menu {
+    max-width: 100%;
+  }
+}

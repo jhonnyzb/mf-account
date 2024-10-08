@@ -1,0 +1,101 @@
+<div class="container contenedor-mis-pedidos">
+  <p class="bold-24 terciary title-content">Estado de tus pedidos</p>
+  <div class="content-info">
+    <div class="content-estado" *ngIf="itemsOrder.length > 0">
+      <div class="card-article" *ngFor="
+          let product of itemsOrder
+            | paginate
+              : {
+                  totalItems: totalItems,
+                  itemsPerPage: itemsPerPage,
+                  currentPage: currentPage
+                }
+        ">
+        <div class="order-item">
+          <div class="col-12 col-md-4 col-lg-4">
+            <div class="container content-info">
+              <span class="parrafo-icono bold-18 terciary"><em class="icon-file-text"></em> Orden # {{ IDPedido
+                }}</span>
+            </div>
+          </div>
+          <div class="content-img">
+            <img class="col-12 col-md-4 col-lg-4" [src]="product.ImagenPremio" alt="" />
+            <p class="regular-18 terciary">{{ product.Nombre }}</p>
+            <p class="bold-16 terciary">
+              <em class="icon-file-text"></em> Guia #{{ product.CodigoQR }}
+            </p>
+          </div>
+          <div class="col-12 col-md-4 col-lg-4 content-buttons">
+            <label class="estado-order regular-16 terciary"><span
+                [ngClass]="setStatusClassById(product.IDEstado)"></span>{{ product.EstadoAlterno }}</label>
+          </div>
+        </div>
+        <div class="content-status">
+          <div class="align-circle">
+            <div class="content-icon-circle" [ngClass]="{
+                preparation:
+                  product.EstadoAlterno == 'En preparación' ||
+                  product.EstadoAlterno == 'En camino' ||
+                  product.EstadoAlterno == 'Entregado'
+              }">
+              <em class="icono-pedidos"></em>
+            </div>
+            <div class="estado-pedido">
+              <p class="texto-estado bold-18 terciary">En preparación</p>
+              <span class="texto-fecha regular-14 terciary">{{
+                product.FechaEstado | date : "dd LLL yyyy"
+                }}</span>
+              <span class="texto-info regular-14 terciary">Estamos preparando el paquete.</span>
+            </div>
+          </div>
+          <div class="align-circle">
+            <div class="content-icon-circle" [ngClass]="{
+                onMyWay:
+                  product.EstadoAlterno == 'En camino' ||
+                  product.EstadoAlterno == 'Entregado'
+              }">
+              <em class="icon-truck"></em>
+            </div>
+            <div class="estado-pedido">
+              <p class="texto-estado bold-18 terciary">En camino</p>
+              <span *ngIf="product.FechaDespacho >= product.FechaEstado" class="texto-fecha regular-14 terciary">{{
+                product.FechaDespacho | date : "dd LLL yyyy"
+                }}</span>
+              <span *ngIf="product.FechaDespacho >= product.FechaEstado" class="texto-info regular-14 terciary">Salió del centro de distribución</span>
+            </div>
+          </div>
+          <div class="align-circle">
+            <div class="content-icon-circle" [ngClass]="{ delivered: product.EstadoAlterno == 'Entregado' }">
+              <em class="icon-home"></em>
+            </div>
+            <div class="estado-pedido">
+              <p class="texto-estado bold-18 terciary"
+                [ngClass]="{ 'textNoDelivered': product.EstadoAlterno != 'Entregado' }">Entregado</p>
+                <span *ngIf="product.FechaEntrega >= product.FechaEstado" class="texto-fecha regular-14 terciary"
+                  [ngClass]="{ 'textNoDelivered': product.EstadoAlterno != 'Entregado' }">{{
+                  product.FechaEntrega | date : "dd LLL yyyy"
+                  }}</span>
+                <span *ngIf="product.FechaEntrega >= product.FechaEstado" class="texto-info regular-14 terciary"
+                  [ngClass]="{ 'textNoDelivered': product.EstadoAlterno != 'Entregado' }">Hemos entregado el
+                  paquete</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content-card-total">
+        <div class="content-dir-total col-md-6">
+          <p class="bold-20 terciary">
+            Dirección de envío:
+            <span class="regular-20 terciary">{{ principalAddress.Direccion }}</span>
+          </p>
+          <p class="regular-18 terciary">Total: {{ totalPuntos | number }} {{'Poner aqui tipo de punto'}}</p>
+        </div>
+        <div class="col-md-6 content-boton-regresar" *ngIf="listaPremios.IDClasePremio !=10">
+          <button class="boton-regresar regular-16" (click)="addCart()">
+            Volver a agregar al carrito
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+
+.confirmAward {
+  height: 400px;
+  padding: 24px;
+
+  &__close {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__iconClose {
+    color: var(--ngx-valepro-color-tertiary);
+    cursor: pointer;
+  }
+
+  &__contain{
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__messagge {
+    text-align: center;
+  }
+
+  &__containBtn {
+    width: 100%;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    height: 120px;
+    justify-content:space-around;
+    align-items: center;
+  }
+
+  &__btnConfirm{
+    width: 260px;
+    height: 44px;
+    border-radius: 22px;
+    border: 2px var(--ngx-valepro-color-tertiary) solid;
+    background-color: var(--ngx-valepro-color-tertiary);
+    cursor: pointer;
+  }
+
+  &__btnUpdate{
+    width: 260px;
+    height: 44px;
+    border-radius: 22px;
+    border: 2px var(--ngx-valepro-color-tertiary) solid;
+    cursor: pointer;
+    background-color: white;
+  }
+
+  &__containOperator {
+    margin-top: 32px;
+    position: relative;
+  }
+
+  &__operators {
+    width: 100%;
+    margin-top: 8px;
+
+  }
+
+  &__error {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    color: red;
+
+  }
+
+}
+
+
+
+@media screen and (min-width: 768px) {
+  .confirmAward {
+   padding: 28px;
+
+   &__containBtn {
+    flex-direction: row;
+    margin-top: unset;
+   }
+  }
+}
+
+
+

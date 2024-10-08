@@ -1,0 +1,94 @@
+<div class="points">
+  <div class="points__container">
+    <div class="points__bar">
+      <span class="bold-16 primary">Mis puntos</span>
+    </div>
+    <div class="points__content">
+      <div class="points__profile">
+        <app-menu-profiles></app-menu-profiles>
+      </div>
+      <div class="points__information">
+        <div class="points__main">
+          <div class="points__card points__card--mright">
+            <span class="regular-14 primary">Tienes</span>
+            <div class="points__details">
+              <span class="bold-24 points__enabled">{{ pointsAvaliable | number:'1.0-0' }}
+                <span class="bold-12 points__text">Puntos</span>
+              </span>
+              <span class="regular-12 primary points__text2">Disponibles</span>
+            </div>
+          </div>
+          <div class="points__card points__card--mleft">
+            <span class="regular-14 primary">Próximos a vencer</span>
+            <div class="points__details">
+              <span class="bold-24 points__beat">{{ pointsAboutToExpire | number:'1.0-0' }}
+                <span class="bold-12 points__text">Puntos</span>
+              </span>
+              <span class="regular-12 primary points__text2">{{ nextExpirationDate | date: 'd MMM y' }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="points__transaccions">
+          <div class="points__headers">
+            <div class="points__item">
+              <span class="bold-12 primary">Tipo de transacción</span>
+            </div>
+            <div class="points__item">
+              <span class="bold-12 primary">Detalle</span>
+            </div>
+            <div class="points__item">
+              <span class="bold-12 primary">Fecha</span>
+            </div>
+            <div class="points__item">
+              <span class="bold-12 primary">Puntos</span>
+            </div>
+          </div>
+          <div *ngFor="let item of transactions; let last = last" class="points__items"
+            [ngClass]="{'points__items--rounded': last}">
+            <div class="points__item">
+              <span class="bold-12 primary">{{typeTransacctionText(item.TransactionType)}}</span>
+            </div>
+            <div class="points__item">
+              <span class="regular-12 primary">{{item.Detail}}</span>
+            </div>
+            <div class="points__item">
+              <span class="regular-12 primary points__dateD">{{ formatDate(item.Date, false) }}</span>
+              <span class="regular-12 primary points__dateM">{{ formatDate(item.Date, true) }}</span>
+            </div>
+            <div class="points__item">
+              <span class="bold-12"
+                [ngClass]="{'points__negative': item.Points < 0, 'points__positive': item.Points >= 0}">{{
+                item.Points }}</span>
+            </div>
+          </div>
+          <div class="points__paginateContain">
+            <div class="points__paginate">
+              <div class="points__textPaginate">
+                <span class="regular-12 primary points__itemsPaginateText">Ítems por página:{{ pageSize }}</span>
+                <span class="regular-12 primary">{{rangeInit}} - {{ rangeEnd }} de {{ totalElements }}</span>
+              </div>
+              <div class="points__arrowsPaginate">
+                <mat-icon class="points__arrowIcon" [ngClass]="{
+                  'points__arrowIcon--colorActive': totalPages > 0 && currentPage !== 1,
+                  'points__arrowIcon--colorInactive': totalPages === 0 || currentPage === 1
+                }" (click)="getFirstPage()">first_page</mat-icon>
+                <mat-icon class="points__arrowIcon" [ngClass]="{
+                  'points__arrowIcon--colorActive': totalPages > 0 && currentPage !== 1,
+                  'points__arrowIcon--colorInactive': totalPages === 0 || currentPage === 1
+                }" (click)="getPreviousPage()">chevron_left</mat-icon>
+                <mat-icon class="points__arrowIcon" [ngClass]="{
+                  'points__arrowIcon--colorActive': totalPages > 0 && currentPage < totalPages,
+                  'points__arrowIcon--colorInactive': totalPages === 0 || currentPage === totalPages
+                }" (click)="getNextPage()">chevron_right</mat-icon>
+                <mat-icon class="points__arrowIcon points__arrowIcon--colorActive" [ngClass]="{
+                  'points__arrowIcon--colorActive': totalPages > 0 && currentPage < totalPages,
+                  'points__arrowIcon--colorInactive': totalPages === 0 || currentPage === totalPages
+                }" (click)="getLastPage()">last_page</mat-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<app-spinner [show]="isLoading"></app-spinner>
+<div class="container contenedor-mis-pedidos">
+
+  <div class="content-info">
+    <div *ngIf="itemsOrder.length == 0" class="content-cart mt-3">
+
+
+      <div class="cart-svg row mt-4 ">
+        <div class="imagen-cart">
+          <img src="../../../../assets/img/carrito-vacio.svg" class="image-cart" alt="carrito vacío" />
+        </div>
+        <div class="mensaje-carrito-vacio-my-orders">
+          <p class="parrafo-carrito-vacio bold-32 primario">
+            ¡Aún no tienes pedidos registrados!
+          </p>
+          <div>
+            <button class="boton-redimir t-4" fooButton (click)="goCatalog()">
+              <span class="regular-18 primario">Ir al catálogo</span>
+            </button>
+        </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="content-estado" *ngIf="itemsOrder.length > 0">
+
+      <div class="card-article"
+        *ngFor="let product of itemsOrder | paginate: { totalItems: totalItems, itemsPerPage: itemsPerPage, currentPage: currentPage  }">
+
+        <div class="order-item">
+          <div class="col-12 col-md-5 col-lg-4">
+            <div class="container content-info">
+              <span class="parrafo-icono icon-file-text medium-18 primario">Orden # {{product.IDPedido}}</span>
+              <span class="parrafo-icono icon-calendar light-16 primario">{{product.FechaDespacho | date: 'longDate'}}</span>
+              <span
+                class="parrafo-icono icon-map-pin light-16 primario">{{'account.DireccionEstablecimiento.direccion'}}</span>
+
+              <span class="total-body">
+                <span class="total-header bold-20 primario">Total:<span
+                    class="total-puntos light-20 primario">{{product.totalPuntos | number}}</span> <span
+                    class="total-puntos regular-14 primario"> {{'this.account.TipoPunto'}} </span> </span>
+                <span *ngIf="product.ValorEnDinero > 0" class="total-dinero light-20 primario">{{product.ValorEnDinero |
+                  number}} <span class="total-dinero regular-14 primario">COP</span></span>
+              </span>
+
+            </div>
+
+          </div>
+          <div class=" col-12 col-md-7 col-lg-8 content-buttons">
+            <label class="estado-order medium-16 azul-oscuro"><span [ngClass]="setStatusClassById(product.IDEstado)"></span>{{product.EstadoAlterno}}</label>
+            <button class="button-enviar" (click)="sendGtmDataCart('Ayuda', product)">Ayuda</button>
+            <button class="button-enviar" (click)="reintentPay(product)">Reintentar pago</button>
+            <button *ngIf="product.IDEstado != 2" class="button-enviar resumen"  (click)="status(product)"><span class="regular-18 primario">Ver resumen</span></button>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="pb-2">
+        <pagination-controls (pageChange)="pageChanged($event)" previousLabel="" nextLabel=""
+          screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page">
+        </pagination-controls>
+      </div>
+
+    </div>
+  </div>
+</div>

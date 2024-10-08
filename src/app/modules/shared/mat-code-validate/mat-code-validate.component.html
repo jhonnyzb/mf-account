@@ -1,0 +1,46 @@
+<div class="code-container">
+  <div class="code-container__row">
+
+    <div class="code-container__imagen-content">
+      <div class="code-container__img">
+        <img src="../../../../assets/img/icon-password.svg" class="code-container__img-icon" alt="caja carrito" />
+      </div>
+      <p class="code-container__img-text desk primary bold-32">Código de verificación</p>
+      <p class="code-container__img-text movil primary bold-24">Código de verificación</p>
+    </div>
+
+    <div class="code-container__content-code">
+      <div class="code-container__code">
+        <div class="code-container__text-code">
+          <div class="code-container__disclaimer"><span class="regular-16 primary">Por favor escribe el código de
+              seguridad enviado a tu correo electrónico o por SMS a tu teléfono</span></div>
+        </div>
+        <div class="code-container__input-code ">
+          <div class="code-container__margin-b">
+            <code-input [isCodeHidden]="false" [codeLength]="6" (codeCompleted)="onCodeCompleted($event) "
+              (codeChanged)="onCodeCompleted($event) " [ngClass]="{'code-input-error': emptyCode || invalidCode}">
+            </code-input>
+            <mat-error *ngIf="invalidCode || emptyCode">
+              <span class="regular-12">* Escribe un código válido</span>
+            </mat-error>
+          </div>
+          <div class="code-container__code-text ">
+            <div class="code-container__code-text">
+              <span class="regular-16 primary">El código vence en <span
+                  class="bold-16 primary">{{minutes}}:{{seconds}}</span>
+                minutos</span>
+            </div>
+          </div>
+
+          <div class="code">
+            <div class="code-container__resend-code" *ngIf="isresend">
+              <span class="regular-16 primary" (click)="resendCode()">Reenviar código</span>
+            </div>
+
+            <div class="code-container__content-btn" [ngClass]="{'ocultar': isresend}">
+              <button class="code-container__btn bold-16 primary button" (click)="validateCode()">Continuar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

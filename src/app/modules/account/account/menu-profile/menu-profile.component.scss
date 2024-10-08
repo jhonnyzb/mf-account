@@ -1,0 +1,36 @@
+.containerMenuUser {
+  color: var(--ngx-valepro-color-secondary);
+  width: 100%;
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__menuList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0rem 0rem .5rem 0rem;
+    margin-bottom: .5rem;
+    align-items: center;
+    border-bottom: 1px solid var(--ngx-valepro-color-secondary);
+    width: 100%;
+    cursor: pointer;
+
+    mat-icon {
+      padding-right: .5rem;
+    }
+  }
+
+  &__list:last-child {
+    border: none;
+  }
+
+}

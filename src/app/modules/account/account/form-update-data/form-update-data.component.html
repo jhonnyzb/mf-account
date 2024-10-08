@@ -1,0 +1,81 @@
+<div>
+  <div class="content-form-popup row">
+    <div class="col imagen-popup">
+      <img src="./../../../../assets/img/image-update.png" alt="">
+    </div>
+    <div class="col form-actualizar">
+      <form [formGroup]="updateForm" *ngIf="configForm && updateForm">
+        <div class="content-inputs" *ngFor="let item of configForm.FormAttributes">
+          <div
+            *ngIf="item.FormAttributeId != 17 && item.FormAttributeId != 18 && item.FormAttributeId != 23 && item.FormAttributeId != 24
+          && item.FormAttributeId != 26 && item.FormAttributeId != 27 && item.FormAttributeId != 28 && item.FormAttributeId != 29">
+            <!-- Lista -->
+            <div class="center-inputs">
+              <mat-form-field class="input" appearance="fill" *ngIf="item.Type == 'L'">
+                <mat-label class="light-15">{{item.Label}}</mat-label>
+                <mat-select [formControlName]="item.FormAttributeId" [placeholder]="item.Placeholder"
+                  (selectionChange)="changeListLocation(item.Name, item.FormAttributeId)" class="light-15">
+                  <mat-option *ngFor="let opt of item.listAsigned" [value]="opt.codeId">{{opt.name}}</mat-option>
+                </mat-select>
+                <mat-error class="error-login"
+                  *ngIf="!updateForm.get(item.FormAttributeId.toString())?.valid">{{item.errorMessageRegularExpression}}</mat-error>
+              </mat-form-field>
+            </div>
+            <!-- Input -->
+            <div class="center-inputs">
+              <mat-form-field class="input" appearance="fill" *ngIf="item.Type == 'E'">
+                <mat-label>{{item.Label}}</mat-label>
+                <input type="email" formControlName="{{item.FormAttributeId}}" matInput [placeholder]="item.Placeholder"
+                  title="mail">
+                <mat-error *ngIf="!updateForm.get(item.FormAttributeId.toString())?.valid">
+                  {{item.errorMessageRegularExpression}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <!-- Input -->
+            <div class="center-inputs">
+              <mat-form-field class="input" appearance="fill" *ngIf="item.Type == 'N'">
+                <mat-label>{{item.Label}}</mat-label>
+                <input type="number" formControlName="{{item.FormAttributeId}}" matInput
+                  [placeholder]="item.Placeholder" title="number">
+                <mat-error *ngIf="!updateForm.get(item.FormAttributeId.toString())?.valid">
+                  {{item.errorMessageRegularExpression}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <!-- String  -->
+            <div class="center-inputs">
+              <mat-form-field class="input" appearance="fill" *ngIf="item.Type == 'S'" class="input login"
+                appearance="fill">
+                <mat-label class="light-15">{{item.Label}}</mat-label>
+                <input formControlName="{{item.FormAttributeId}}" [placeholder]="item.Placeholder" matInput>
+                <mat-error class="error-login"
+                  *ngIf="!updateForm.get(item.FormAttributeId.toString())?.valid">{{item.errorMessageRegularExpression}}</mat-error>
+              </mat-form-field>
+            </div>
+
+            <!-- Date -->
+            <div class="center-inputs">
+              <mat-form-field class="input" appearance="fill" *ngIf="item.Type == 'D'">
+                <mat-label>{{item.Label}}</mat-label>
+                <input formControlName="{{item.FormAttributeId}}" matInput [matDatepicker]="picker"
+                  [placeholder]="item.Placeholder" title="fecha">
+                <mat-hint class="regular-12 primary40">DD/MM/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="!updateForm.get(item.FormAttributeId.toString())?.valid">
+                  {{item.errorMessageRegularExpression}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="center-inputs content-button mb-5">
+          <button class="button-enviar primario mt-4" fooButton (click)="onSubmit()"><span
+              class="regular-18 primario">Actualizar
+              datos</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,166 @@
+.code-container {
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 500px;
+  }
+
+  &__imagen-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem 0rem 0rem 0rem;
+    box-sizing: border-box;
+  }
+
+  &__img-text {
+    text-align: center;
+  }
+
+  &__img-icon {
+    max-width: 164px;
+    height: 57px;
+  }
+
+  &__code {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  &__input-code {
+    width: 100%;
+    margin: 0 auto;
+
+  }
+
+  &__content-code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 13px;
+    max-width: 284px;
+    margin: 0 auto;
+  }
+
+  &__margin-b {
+    margin-bottom: 8px;
+
+
+  }
+
+  &__btn {
+    width: 260px;
+  }
+
+  &__disclaimer {
+    padding-bottom: 1rem;
+  }
+
+  &__code-text {
+    padding: .2rem 0rem 0rem 0rem;
+  }
+
+  &__resend-code {
+    span {
+      text-decoration: underline;
+      padding-top: 1rem;
+      cursor: pointer;
+    }
+  }
+}
+
+.ocultar {
+  opacity: .6;
+  cursor: not-allowed;
+  filter: grayscale(100%);
+  pointer-events: none;
+}
+
+mat-error {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: .5rem;
+  box-sizing: border-box;
+}
+
+.code-input-error span {
+  border-bottom: 2px solid red;
+}
+
+.desk {
+  display: none;
+}
+
+////////////////////// Media Queries estructura BEM /////////////////////
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .code-container {
+    &__imagen-content {
+      width: 251px;
+      padding: 2rem 1rem 0rem 1rem;
+    }
+
+    &__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 500px;
+
+    }
+
+    &__img-icon {
+      max-width: 200px;
+      height: 78px;
+    }
+  }
+
+  .movil {
+    display: none;
+  }
+
+  .desk {
+    display: flex;
+  }
+}
+
+
+@media screen and (min-width: 1024px) {
+  .code-container {
+    &__imagen-content {
+      width: 251px;
+      padding: 2rem 1rem 0rem 1rem;
+    }
+
+    &__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 500px;
+
+    }
+
+    &__code {
+      width: 283px;
+    }
+
+    &__img-icon {
+      max-width: 200px;
+      height: 78px;
+    }
+  }
+
+  .movil {
+    display: none;
+  }
+
+  .desk {
+    display: flex;
+  }
+}

@@ -1,0 +1,18 @@
+<div class="containerMenuUser" *ngIf="listMenu.length > 0">
+  <div class="containerMenuUser__menu">
+    <div class="containerMenuUser__menuList">
+      <div class="containerMenuUser__list" *ngFor="let item of listMenu">
+        <mat-icon>{{ getIconForPath(item.Path) }}</mat-icon>
+        <span class="regular-16 primary" [routerLink]="[item.Path]" routerLinkActive="active" (click)="goTo(item)">
+          {{item.Name}}
+        </span>
+        <br>
+      </div>
+
+      <div class="containerMenuUser__list " (click)="logout()"> <mat-icon>logout</mat-icon> <span
+          class="regular-16 primary">Cerrar sesión </span>
+      </div>
+    </div>
+  </div>
+
+</div>

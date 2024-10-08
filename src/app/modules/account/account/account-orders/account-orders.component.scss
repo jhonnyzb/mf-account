@@ -1,0 +1,245 @@
+.button-enviar{
+    cursor: pointer;
+    margin-right: 5px;
+    padding: 4px 11px;
+    width: auto;
+    &.resumen{
+        border: 1px solid var(--ngx-valepro-color-primary);
+    }
+    &.reintentar{
+        display: none;
+    }
+    &:nth-child(3){
+        margin-right: 5px;
+    }
+    &:last-child{
+        margin-right: 0;
+    }
+ 
+
+}
+
+.parrafo-icono{
+    margin-bottom: 5px;
+    &:first-child{
+        margin-bottom: 10px;
+    }
+    &::before{
+        margin-right: 5px;
+
+    }
+}
+
+
+.contenedor-mis-pedidos {
+    margin: 0;
+    padding: 2%;
+    background-color: var(--ngx-valepro-color-blanco);
+}
+
+.round-status {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+.card-article{
+    margin-top: 2em;
+    box-shadow: 0px 2px 4px #00000029;
+    &:first-child{
+        margin-top: 0;
+    }
+}
+
+.order-item {
+    position: relative;
+    padding: 1em 1em;
+    display: flex;
+    flex-flow: column;
+}
+.content-info{
+    display: flex;
+    flex-flow: column;
+    padding: 0;
+}
+
+
+.in-preparation {
+    background: var(--ngx-valepro-color-before);
+    border: 1px solid var(--ngx-valepro-color-before);
+}
+
+.in-transit {
+    background: var(--ngx-valepro-color-secondary);
+    border: 1px solid var(--ngx-valepro-color-secondary);
+}
+.total-header{
+    display: flex;
+    align-items: baseline;
+}
+.canceled {
+    background: var(--ngx-valepro-color-danger);
+    border: 1px solid var(--ngx-valepro-color-danger);
+}
+
+.delivered {
+    background: var(--ngx-valepro-color-success);
+    border: 1px solid var(--ngx-valepro-color-success);
+}
+
+.estado-order{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+
+.total-puntos {
+    margin-left: 2%;
+    
+}
+.total-dinero{
+    display: flex;
+    align-items: baseline;
+    margin-left: 10%;
+}
+.total-body{
+    display: flex;
+}
+.parrafo-carrito-vacio{
+    text-align: center;
+    margin-bottom: 1em;
+}
+.imagen-cart{
+    max-width: 170px;
+    padding: 4vh 0;
+    img{
+      width: 100%;
+    }
+}
+
+.cart-svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    flex-direction: column;
+}
+
+.content-buttons{
+    display: flex;
+    align-items: flex-end;
+    position: initial;
+    margin-top: 1em;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    .button-enviar{
+        flex: 1 49%;
+        font-size: 14px;
+        margin: 0;
+        padding: 5px 8px;
+        &:nth-child(2){
+            margin-right: 3px;
+        }
+        &:last-child{
+            flex: 1 100%;
+            margin-top: 10px;
+        }
+    }
+}
+
+.mensaje-carrito-vacio-my-orders {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    div {
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 450px) {
+    .content-buttons{
+        .button-enviar{
+            flex: 1;
+            &:nth-child(2){
+                margin-right: 5px;
+            }
+          
+            &:last-child{
+                flex: 1;
+
+            }
+        }
+    }
+}
+
+
+@media (min-width: 768px) {
+
+    .content-buttons{
+        margin-top: 0;
+        position: relative;
+        justify-content: flex-end;
+        align-content: flex-end;
+        .button-enviar{
+            flex: inherit;
+            font-size: 16px;
+            padding: 4px 10px;
+            margin-right: 5px;
+            &:nth-child(2){
+                flex: 1;
+                margin-right: 5px;
+            }
+            
+            &:last-child{
+                flex: 1;
+                padding: 5px 10px;
+                margin: 10px 0 0 0;
+            }
+        }
+    }
+    .imagen-cart{
+        max-width: 190px;
+    }
+    .estado-order{
+        top: 0;
+        right: 0;
+    }
+    .order-item{
+        flex-flow: row;
+        position: inherit;
+    }
+    
+  
+    .content-info{
+        padding-right: calc(var(--bs-gutter-x) * .5);
+        padding-left: calc(var(--bs-gutter-x) * .5);
+    }
+}
+
+
+@media (min-width: 990px) {
+    .content-buttons{
+        .button-enviar{
+            &:nth-child(2){
+                flex: inherit;
+            }
+          
+            &:last-child{
+                flex: inherit;
+            }
+        }
+    }
+}
+
+@media (max-width: 420px) {
+    .estado-order {
+        max-width: 160px;
+    }
+    .round-status {
+        height: 12px;
+    }
+}

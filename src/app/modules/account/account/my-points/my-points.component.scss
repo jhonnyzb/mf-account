@@ -1,0 +1,247 @@
+.points {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 30px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  &__bar {
+    align-items: center;
+    background-color: var(--ngx-valepro-color-primary);
+    border-radius: 22px;
+    cursor: pointer;
+    display: flex;
+    height: 44px;
+    padding-left: 15px;
+  }
+
+  &__icon {
+    font-size: 24px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  &__profile {
+    display: none;
+    width: 282px;
+  }
+
+  &__information {
+    width: 100%;
+  }
+
+  &__main {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__card {
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0px 0px 6px #00000029;
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    justify-content: center;
+    width: 50%;
+
+    &--mright {
+      margin-right: 10px;
+    }
+
+    &--mleft {
+      margin-left: 10px;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__enabled {
+    color: #8DC53F;
+  }
+
+  &__beat {
+    color: #FA2323;
+  }
+
+  &__text {
+    margin-left: -4px;
+  }
+
+  &__transaccions {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__headers {
+    display: flex;
+    height: 45px;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+    background-color: #F4F4F4;
+    border: 1px solid #E1E1E1;
+  }
+
+  &__item {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+  }
+
+  &__items {
+    display: flex;
+    min-height: 60px;
+    text-align: center;
+    border: 1px solid #E1E1E1;
+
+    &--rounded {
+      border-radius: 0 0 8px 8px;
+    }
+  }
+
+  &__positive {
+    color: #8DC53F;
+  }
+
+  &__negative {
+    color: #FA2323;
+  }
+
+  &__paginateContain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  &__paginate {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__textPaginate {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__arrowsPaginate {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+  }
+
+  &__arrowIcon {
+    font-size: 24px;
+    cursor: pointer;
+
+    &--colorInactive {
+      color: #E1E1E1;
+    }
+
+    &--colorActive {
+      color: #A8A4B6;
+    }
+  }
+
+  &__dateD{
+    display: none;
+  }
+
+  &__menu-items {
+    border-bottom: 1px solid var(--ngx-valepro-color-secondary);
+    color: var(--ngx-valepro-color-secondary);
+    width: 100%;
+    padding: 0.5rem 0rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+
+    mat-icon {
+      padding: 0rem .5rem;
+    }
+  }
+
+  &__menu-items:last-child {
+    border: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .points {
+    &__paginateContain {
+      justify-content: end;
+    }
+
+    &__paginate {
+      width: 450px;
+    }
+
+    &__textPaginate {
+      flex-direction: row;
+      justify-content: end;
+      margin-right: 10px;
+    }
+
+    &__arrowsPaginate {
+      margin-right: 0;
+    }
+
+    &__itemsPaginateText {
+      margin-right: 15px;
+    }
+
+    &__dateM{
+      display: none;
+    }
+
+    &__dateD{
+      display: inline;
+    }
+
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .points {
+    &__details {
+      flex-direction: row;
+    }
+
+    &__text2 {
+      margin-top: 10px;
+      margin-left: 5px;
+    }
+
+    &__profile {
+      display: block;
+    }
+
+    &__information {
+      padding-left: 15px;
+    }
+  }
+}
